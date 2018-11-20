@@ -1,5 +1,6 @@
 
 RUN:
+DELETE MONITOR DON'T WORK
 
 console command for run script:
 
