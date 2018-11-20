@@ -1,6 +1,6 @@
 This software is necessary for the automatic creation of monitors in date.
 Link to documentation in date:
-https://docs.datadoghq.com/api/?lang=python#create-a- monitor
+https://docs.datadoghq.com/api/?lang=python#create-a-monitor
 
 To work correctly on the host, you must install the agent:
 https://docs.datadoghq.com/agent/?tab=agentv6
