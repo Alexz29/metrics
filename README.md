@@ -1,4 +1,4 @@
-This software is necessary for the automatic creation of monitors in date.
+This software is necessary for the automatic creation of monitors in DataDog.
 Link to documentation in date:
 https://docs.datadoghq.com/api/?lang=python#create-a-monitor
 
