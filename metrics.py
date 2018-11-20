@@ -81,7 +81,7 @@ class Monitors:
 
             if flag:
                 api.Monitor.delete(remote['id'])
-                print remote['name'] + "has been deleted"
+                print remote['name'] + " has been deleted"
 
     def run(self):
         # before delete monitors
@@ -91,7 +91,7 @@ class Monitors:
             monitor_id = self.is_monitor_isset(monitor['name'])
             if monitor_id:
                 self.update_monitor(monitor_id, monitor['query'], monitor['message'])
-                print monitor['name'] + "has been updated"
+                print monitor['name'] + " has been updated"
             else:
                 self.create_monitor(
                     monitor['type'],
@@ -100,7 +100,7 @@ class Monitors:
                     monitor['name'],
                     monitor['tags'],
                     monitor['options'])
-                print monitor['name'] + "has been created"
+                print monitor['name'] + " has been created"
 
 
 if sys.argv[1]:
