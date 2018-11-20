@@ -1,0 +1,62 @@
+{
+  "api_key": "fa96c8a517e4fa74e7bd64f871c51163",
+  "app_key": "1bf3d126132ced9820af1b33dfbc7c9ecbf88240",
+  "monitors": [
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.cpu.user{host:{{host}}} > 90",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.cpu.user host:{{host}}",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.mem.free{host:{{host}}} > 100000000000",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.mem.free host:{{host}}",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.load.1{host:{{host}}} > 5",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.load.1 host:{{host}}",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.disk.free{host:{{host}}} < 100000000",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.disk.free host:{{host}}",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    }
+  ]
+}
