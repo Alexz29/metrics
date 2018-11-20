@@ -1,23 +1,32 @@
+This software is necessary for the automatic creation of monitors in date.
+Link to documentation in date:
+https://docs.datadoghq.com/api/?lang=python#create-a- monitor
 
-RUN:
-DELETE MONITOR DON'T WORK
+To work correctly on the host, you must install the agent:
+https://docs.datadoghq.com/agent/?tab=agentv6
 
-console command for run script:
+And python lib:
+https://docs.datadoghq.com/integrations/python/
 
-'''
+System requirements:
+##Python 2.7
+
+
+For run
+```
 python metrics.py datadog.json
-'''
+```
 
 Param:
 
-'''
+```
 datadog.json - this is the config file
-'''
+```
 
 
 Example of configuration:
 
-'''
+```
 {
       "type": "metric alert",
       "query": "avg(last_5m):avg:system.cpu.user{host:{{host}}} > 90",
@@ -32,4 +41,4 @@ Example of configuration:
         "no_data_timeframe": 20
       }
     },
-'''
+```

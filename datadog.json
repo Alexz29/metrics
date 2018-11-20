@@ -18,20 +18,6 @@
     },
     {
       "type": "metric alert",
-      "query": "avg(last_5m):avg:system.mem.free{host:{{host}}} > 100000000000",
-      "message": "We may need to add web hosts if this is consistently high.",
-      "name": "metric:system.mem.free host:{{host}}",
-      "tags": [
-        "app:webserver",
-        "cpa"
-      ],
-      "options": {
-        "notify_no_data": true,
-        "no_data_timeframe": 20
-      }
-    },
-    {
-      "type": "metric alert",
       "query": "avg(last_5m):avg:system.load.1{host:{{host}}} > 5",
       "message": "We may need to add web hosts if this is consistently high.",
       "name": "metric:system.load.1 host:{{host}}",

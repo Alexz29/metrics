@@ -57,7 +57,7 @@ class Monitors:
 
     @staticmethod
     def update_monitor(monitor_id, query, message):
-        api.Monitor.update(monitor_id, query=query, message=message)
+        return api.Monitor.update(monitor_id, query=query, message=message)
 
     @staticmethod
     def is_monitor_isset(name):
@@ -71,14 +71,29 @@ class Monitors:
                 flag = False
         return flag
 
+    def delete_monitor(self):
+        monitors = api.Monitor.get_all()
+        for remote in monitors:
+            flag = True
+            for local in self.config['monitors']:
+                if remote['name'] == local['name']:
+                    flag = False
+
+            if flag:
+                api.Monitor.delete(remote['id'])
+                print remote['name'] + "has been deleted"
+
     def run(self):
+        # before delete monitors
+        self.delete_monitor()
+
         for monitor in self.config['monitors']:
             monitor_id = self.is_monitor_isset(monitor['name'])
             if monitor_id:
                 self.update_monitor(monitor_id, monitor['query'], monitor['message'])
                 print monitor['name'] + "has been updated"
             else:
-                print self.create_monitor(
+                self.create_monitor(
                     monitor['type'],
                     monitor['query'],
                     monitor['message'],
