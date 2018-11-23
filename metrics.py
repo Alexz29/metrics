@@ -43,9 +43,11 @@ class ConfigParser:
 
 class Monitors:
     config = {}
+    node_name = ''
 
     def __init__(self, config):
         self.config = config
+        self.node_name = platform.node()
         initialize(**{
             'api_key': self.config['api_key'],
             'app_key': self.config["app_key"]
@@ -72,7 +74,7 @@ class Monitors:
         return flag
 
     def delete_monitor(self):
-        monitors = api.Monitor.get_all()
+        monitors = api.Monitor.get_all(name=self.node_name)
         for remote in monitors:
             flag = True
             for local in self.config['monitors']:
