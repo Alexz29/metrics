@@ -46,3 +46,9 @@ Example of configuration:
       }
     },
 ```
+
+
+For run all test:
+```
+python -m unittest discover -s lib -p 'Test*.py'
+```
