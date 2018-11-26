@@ -9,6 +9,9 @@ https://docs.datadoghq.com/agent/?tab=agentv6
 And python lib:
 https://docs.datadoghq.com/integrations/python/
 
+Widget information:
+https://docs.datadoghq.com/graphing/dashboards/widgets/
+
 System requirements:
 ##Python 2.7
 
