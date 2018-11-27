@@ -52,3 +52,26 @@ For run all test:
 ```
 python -m unittest discover -s lib -p 'Test*.py'
 ```
+
+Config:
+
+```
+{
+  "api_key": "< YOUR API KEY >", // require
+  "app_key": "< YOUR APP _KEY >",// require
+  
+  // screenboard require 
+  "screenboard": {   
+    "width": 1024, 
+    "height": 768,
+    "board_title": "MY CUSTOM SCREENBOARD",
+    "description": "description",
+    "widgets": [< YOUR WIDGETS >],
+    "template_variables": [< TEMPLATE VARIABLES >],
+    "read_only": false
+  },
+  
+  "monitors": [< YOUR MONITORS >]
+}
+
+```
