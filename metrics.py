@@ -5,7 +5,10 @@ import sys
 if sys.argv[1]:
 
     instance = ConfigParser(sys.argv[1])
-    conf = instance.get_config()
+    conf = instance.get_config
+
+    if not conf:
+        raise Exception("Wrong config")
 
     options = {
         'api_key': conf['api_key'],
@@ -13,11 +16,14 @@ if sys.argv[1]:
     }
     initialize(**options)
 
-    monitor_delete_ids = Main.get_ids_for_delete(
-        api.Monitor.get_all(name=instance.node_name),
-        conf['monitors'],
-        'name'
-    )
+    try:
+        monitor_delete_ids = Main.get_ids_for_delete(
+            api.Monitor.get_all(name=instance.node_name),
+            conf['monitors'],
+            'name'
+        )
+    except:
+        raise Exception("Auth problem")
 
     for monitor_delete_id in monitor_delete_ids:
         api.Monitor.delete(monitor_delete_id)
@@ -72,4 +78,4 @@ if sys.argv[1]:
         )
 
 else:
-    raise Exception('file path is empty ')
+    raise Exception('param file path is empty')
