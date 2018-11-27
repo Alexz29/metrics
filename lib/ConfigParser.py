@@ -46,7 +46,15 @@ class ConfigParser:
                         "type": "boolean"
                     }
                 },
-                "required": ["width", "height", "template_variables"]
+                "required": [
+                    "width",
+                    "height",
+                    "board_title",
+                    "description",
+                    "widgets",
+                    "template_variables",
+                    "read_only"
+                ]
             },
             "monitors": {
                 "type": "array"
@@ -62,7 +70,7 @@ class ConfigParser:
                 try:
                     self.config = json.load(f)
                 except:
-                    print  ("file " + file_name + " invalid json")
+                    print ("file " + file_name + " invalid json")
         else:
             raise Exception("file " + file_name + " not found")
 
