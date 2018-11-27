@@ -14,7 +14,10 @@ https://docs.datadoghq.com/graphing/dashboards/widgets/
 
 System requirements:
 ##Python 2.7
-
+##jsonschema
+```
+pip install jsonschema
+```
 
 For run
 ```
