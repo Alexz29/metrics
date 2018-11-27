@@ -84,5 +84,4 @@ class ConfigParser:
             return self.config
         else:
             for error in sorted(conf.iter_errors(self.config), key=str):
-                print error.message
-            return False
+                return error.message

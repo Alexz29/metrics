@@ -1,0 +1,217 @@
+{
+  "api_key": "fa96c8a517asxe4fa7sdcds4ere7bd64f871c51163",
+  "app_key": "58bb53443abd8wedewd2332dasxb0ca81b",
+  "screenboard": {
+    "width": 1024,
+    "height": 768,
+    "board_title": "MY CUSTOM SCREENBOARD",
+    "description": "description",
+    "widgets": [
+      {
+        "type": "timeseries",
+        "title": true,
+        "title_size": 16,
+        "title_align": "left",
+        "title_text": "system.load.1 (m/s)",
+        "height": 13,
+        "width": 47,
+        "y": 0,
+        "x": 0,
+        "time": {
+          "live_span": "1h"
+        },
+        "tile_def": {
+          "viz": "timeseries",
+          "requests": [
+            {
+              "q": "sum:system.load.1{*} by {host}"
+            }
+          ],
+          "events": [
+            {
+              "q": "tags:release"
+            }
+          ]
+        }
+      },
+      {
+        "type": "timeseries",
+        "title": true,
+        "title_size": 16,
+        "title_align": "left",
+        "title_text": "system.cpu.user (m/s)",
+        "height": 13,
+        "width": 47,
+        "y": 15,
+        "x": 0,
+        "time": {
+          "live_span": "1h"
+        },
+        "tile_def": {
+          "viz": "timeseries",
+          "requests": [
+            {
+              "q": "sum:system.cpu.user{*} by {host}"
+            }
+          ],
+          "events": [
+            {
+              "q": "tags:release"
+            }
+          ]
+        }
+      },
+      {
+        "type": "timeseries",
+        "title": true,
+        "title_size": 16,
+        "title_align": "left",
+        "title_text": "system.disk.free (m/s)",
+        "height": 13,
+        "width": 47,
+        "y": 30,
+        "x": 0,
+        "time": {
+          "live_span": "1h"
+        },
+        "tile_def": {
+          "viz": "timeseries",
+          "requests": [
+            {
+              "q": "sum:system.disk.free{*} by {host}"
+            }
+          ],
+          "events": [
+            {
+              "q": "tags:release"
+            }
+          ]
+        }
+      },
+      {
+        "type": "timeseries",
+        "title": true,
+        "title_size": 16,
+        "title_align": "left",
+        "title_text": "system.mem.free (m/s)",
+        "height": 13,
+        "width": 47,
+        "y": 45,
+        "x": 0,
+        "time": {
+          "live_span": "1h"
+        },
+        "tile_def": {
+          "viz": "timeseries",
+          "requests": [
+            {
+              "q": "sum:system.mem.free{*} by {host}"
+            }
+          ],
+          "events": [
+            {
+              "q": "tags:release"
+            }
+          ]
+        }
+      },
+      {
+        "type": "hostmap",
+        "title": true,
+        "title_size": 16,
+        "title_align": "left",
+        "title_text": "Host Map",
+        "height": 13,
+        "width": 47,
+        "y": 0,
+        "x": 50,
+        "time": {
+          "live_span": "1h"
+        },
+        "tile_def": {
+          "viz": "hostmap",
+          "groupby": null,
+          "scope": null,
+          "noGroupHosts": true,
+          "noMetricHosts": true,
+          "requests": [
+            {
+              "q": "avg:system.load.1{*} by {host}",
+              "type": "fill"
+            }
+          ],
+          "style": {
+            "fillMin": null,
+            "fillMax": null
+          }
+        }
+      }
+    ],
+    "template_variables": [
+      {
+        "name": "host",
+        "prefix": "host",
+        "default": "host:*"
+      }
+    ],
+    "read_only": false
+  },
+  "monitors": [
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.cpu.user{*} by {host} > 90",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.cpu.user",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.load.1{*} by {host} > 5",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.load.1",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.disk.free{*} by {host} < 100000000",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.disk.free",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    },
+    {
+      "type": "metric alert",
+      "query": "avg(last_5m):avg:system.mem.free{*} by {host} < 100000000",
+      "message": "We may need to add web hosts if this is consistently high.",
+      "name": "metric:system.mem.free",
+      "tags": [
+        "app:webserver",
+        "cpa"
+      ],
+      "options": {
+        "notify_no_data": true,
+        "no_data_timeframe": 20
+      }
+    }
+  ]
+}
