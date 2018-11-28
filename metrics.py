@@ -2,6 +2,16 @@ from lib import ConfigParser, Main
 from datadog import initialize, api
 import sys
 
+CEND = '\33[0m'
+CBLACK = '\33[30m'
+CRED = '\33[31m'
+CGREEN = '\33[32m'
+CYELLOW = '\33[33m'
+CBLUE = '\33[34m'
+CVIOLET = '\33[35m'
+CBEIGE = '\33[36m'
+CWHITE = '\33[37m'
+
 if sys.argv[1]:
 
     instance = ConfigParser(sys.argv[1])
@@ -27,6 +37,7 @@ if sys.argv[1]:
 
     for monitor_delete_id in monitor_delete_ids:
         api.Monitor.delete(monitor_delete_id)
+        print (CGREEN + ">>>Monitor id: " + monitor_delete_id + " has been delet" + CEND)
 
     for monitor in conf['monitors']:
         monitor_id = Main().isset(api.Monitor.get_all(), monitor['name'], 'name')
@@ -39,6 +50,7 @@ if sys.argv[1]:
                 name=monitor['name'],
                 tags=monitor['tags'],
                 options=monitor['options'])
+            print (CGREEN + ">>>Monitor " + monitor['name'] + " has been update" + CEND)
         else:
             api.Monitor.create(
                 type=monitor['type'],
@@ -47,6 +59,7 @@ if sys.argv[1]:
                 name=monitor['name'],
                 tags=monitor['tags'],
                 options=monitor['options'])
+            print (CGREEN + ">>>Monitor " + monitor['name'] + " has been create" + CEND)
 
     screenboard = conf['screenboard']
     screenboard_id = Main().isset(
@@ -66,6 +79,7 @@ if sys.argv[1]:
             height=screenboard['height'],
             read_only=screenboard['read_only']
         )
+        print (CGREEN + ">>>Screenboard " + screenboard['board_title'] + " has been update" + CEND)
     else:
         api.Screenboard.create(
             board_title=screenboard['board_title'],
@@ -76,6 +90,8 @@ if sys.argv[1]:
             height=screenboard['height'],
             read_only=screenboard['read_only']
         )
+        print (CGREEN + ">>>Screenboard " + screenboard['board_title'] + " has been create" + CEND)
 
+    print (CBLUE + "DONE ... " + CEND)
 else:
     raise Exception('param file path is empty')

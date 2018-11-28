@@ -1,6 +1,6 @@
 {
-  "api_key": "fa96c8a517e4fa74e7bd64f871c51163",
-  "app_key": "58bb53443abd814f3fc3cfb37392083d4b0ca81b",
+  "api_key": "{{api_key}}",
+  "app_key": "{{app_key}}",
   "screenboard": {
     "width": 1024,
     "height": 768,
