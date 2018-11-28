@@ -21,10 +21,6 @@ class ConfigParser:
                 "description": "Application Key",
                 "type": "string"
             },
-            "group": {
-                "description": "Group by",
-                "type": "string"
-            },
             "screenboard": {
                 "type": "object",
                 "properties": {
@@ -64,7 +60,7 @@ class ConfigParser:
                 "type": "array"
             }
         },
-        "required": ["api_key", "app_key", "screenboard", "monitors", "group"]
+        "required": ["api_key", "app_key", "screenboard", "monitors"]
     }
 
     def __init__(self, file_name):
