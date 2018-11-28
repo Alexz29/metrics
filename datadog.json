@@ -1,6 +1,7 @@
 {
   "api_key": "{{api_key}}",
   "app_key": "{{app_key}}",
+  "group": "hypeoffers",
   "screenboard": {
     "width": 1024,
     "height": 768,
@@ -24,7 +25,7 @@
           "viz": "timeseries",
           "requests": [
             {
-              "q": "sum:system.load.1{*} by {host}"
+              "q": "sum:system.load.1{hypeoffers} by {host}"
             }
           ],
           "events": [
@@ -51,7 +52,7 @@
           "viz": "timeseries",
           "requests": [
             {
-              "q": "sum:system.cpu.user{*} by {host}"
+              "q": "sum:system.cpu.user{hypeoffers} by {host}"
             }
           ],
           "events": [
@@ -78,7 +79,7 @@
           "viz": "timeseries",
           "requests": [
             {
-              "q": "sum:system.disk.free{*} by {host}"
+              "q": "sum:system.disk.free{hypeoffers} by {host}"
             }
           ],
           "events": [
@@ -105,7 +106,7 @@
           "viz": "timeseries",
           "requests": [
             {
-              "q": "sum:system.mem.free{*} by {host}"
+              "q": "sum:system.mem.free{hypeoffers} by {host}"
             }
           ],
           "events": [
@@ -159,7 +160,7 @@
   "monitors": [
     {
       "type": "metric alert",
-      "query": "avg(last_5m):avg:system.cpu.user{*} by {host} > 90",
+      "query": "avg(last_5m):avg:system.cpu.user{hypeoffers} by {host} > 90",
       "message": "We may need to add web hosts if this is consistently high.",
       "name": "metric:system.cpu.user",
       "tags": [
@@ -173,7 +174,7 @@
     },
     {
       "type": "metric alert",
-      "query": "avg(last_5m):avg:system.load.1{*} by {host} > 5",
+      "query": "avg(last_5m):avg:system.load.1{hypeoffers} by {host} > 5",
       "message": "We may need to add web hosts if this is consistently high.",
       "name": "metric:system.load.1",
       "tags": [
@@ -187,7 +188,7 @@
     },
     {
       "type": "metric alert",
-      "query": "avg(last_5m):avg:system.disk.free{*} by {host} < 100000000",
+      "query": "avg(last_5m):avg:system.disk.free{hypeoffers} by {host} < 100000000",
       "message": "We may need to add web hosts if this is consistently high.",
       "name": "metric:system.disk.free",
       "tags": [
@@ -201,7 +202,7 @@
     },
     {
       "type": "metric alert",
-      "query": "avg(last_5m):avg:system.mem.free{*} by {host} < 100000000",
+      "query": "avg(last_5m):avg:system.mem.free{hypeoffers} by {host} < 100000000",
       "message": "We may need to add web hosts if this is consistently high.",
       "name": "metric:system.mem.free",
       "tags": [

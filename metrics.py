@@ -35,6 +35,8 @@ if sys.argv[1]:
     except:
         raise Exception("Auth problem")
 
+    api.Tag.create(instance.node_name, tags=[conf['group']])
+
     for monitor_delete_id in monitor_delete_ids:
         api.Monitor.delete(monitor_delete_id)
         print (CGREEN + ">>>Monitor id: " + monitor_delete_id + " has been delet" + CEND)
